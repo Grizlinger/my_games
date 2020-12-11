@@ -5,3 +5,4 @@
 - spaceships
 - sudoku
 - chess
+- Blocks
