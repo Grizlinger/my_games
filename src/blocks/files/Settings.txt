@@ -1,0 +1,8 @@
+Hi Mate!
+
+You have to brake all the bricks with the ball.
+You can control the stick with the arrows.
+If the ball falls, you will lose a life point.
+If the ball bounces from the side of the stick, then it will goes sideways.
+
+Good luck!
