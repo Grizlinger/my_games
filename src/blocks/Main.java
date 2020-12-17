@@ -20,12 +20,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        scene = new Scene(mainLayout);
+        scene = new Scene(mainLayout, 800, 600);
         scene.getStylesheets().add(style);
 
         stage = primaryStage;
         stage.setTitle("Blocks");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
     public void handleSceneChange(String name) {
@@ -34,11 +35,10 @@ public class Main extends Application {
                 scene.setRoot(mainLayout);
                 break;
             case "Start":
-                System.out.println("start");
                 scene.setRoot(gameLayout);
+                gameLayout.setEventHandlers();
                 break;
             case "Settings":
-                System.out.println("settings");
                 scene.setRoot(settingsLayout);
                 break;
             case "game":

@@ -31,7 +31,7 @@ public class MainLayout extends BorderPane {
         vBox.setAlignment(Pos.CENTER);
         vBox.setSpacing(10);
         setId("mainBorderPain");
-        setPrefSize(800,600);
+        //setPrefSize(800,600);
     }
 
     protected void handleButtons(MouseEvent mouseEvent) {
