@@ -1,11 +1,10 @@
 package blocks.layouts;
 
+import blocks.elements.Ball;
 import blocks.elements.Brick;
 import blocks.elements.Stick;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -22,6 +21,7 @@ public class GameLayout extends Group {
     private boolean moveRight = false;
     private int lvl = 1;
     private Stick stick = new Stick();
+    private Ball ball = new Ball();
     private ArrayList<Brick> bricks = new ArrayList<>();
 
     public GameLayout() {
@@ -30,6 +30,7 @@ public class GameLayout extends Group {
         pane.setPrefSize(800, 600);
         getChildren().add(pane);
         getChildren().add(stick);
+        getChildren().add(ball);
     }
 
     public void setEventHandlers() {
@@ -38,14 +39,12 @@ public class GameLayout extends Group {
 
         Timeline timeline = new Timeline();
         timeline.setCycleCount(Timeline.INDEFINITE);
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(1.0 / 60), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (moveLeft)
-                    stick.setX(max(stick.getX() - 5, 5));
-                if (moveRight)
-                    stick.setX(min(stick.getX() + 5, stick.getScene().getWidth() - stick.getWidth() - 5));
-            }
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(1.0 / 60), actionEvent -> {
+            if (moveLeft)
+                stick.setX(max(stick.getX() - 5, 5));
+            if (moveRight)
+                stick.setX(min(stick.getX() + 5, stick.getScene().getWidth() - stick.getWidth() - 5));
+            ball.move();
         });
         timeline.getKeyFrames().add(keyFrame);
         timeline.playFromStart();
