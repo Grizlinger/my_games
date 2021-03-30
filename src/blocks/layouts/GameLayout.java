@@ -3,6 +3,7 @@ package blocks.layouts;
 import blocks.elements.Ball;
 import blocks.elements.Brick;
 import blocks.elements.Stick;
+import blocks.support.Loader;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
@@ -17,6 +18,7 @@ import static java.lang.Math.min;
 
 
 public class GameLayout extends Group {
+    private final Loader loader = new Loader(this);
     private boolean moveLeft = false;
     private boolean moveRight = false;
     private int lvl = 1;
@@ -29,8 +31,7 @@ public class GameLayout extends Group {
         pane.setId("gamePane");
         pane.setPrefSize(800, 600);
         getChildren().add(pane);
-        getChildren().add(stick);
-        getChildren().add(ball);
+        loader.loadMP(lvl);
     }
 
     public void setEventHandlers() {
@@ -45,6 +46,20 @@ public class GameLayout extends Group {
             if (moveRight)
                 stick.setX(min(stick.getX() + 5, stick.getScene().getWidth() - stick.getWidth() - 5));
             ball.move();
+            for (int i = 0; i < bricks.size(); i++) {
+                bricks.get(i).handle(ball);
+                if (bricks.get(i).getDurability() <= 0) {
+                    getChildren().remove(bricks.get(i));
+                    bricks.remove(i);
+                    i--;
+                }
+            }
+            /*bricks.forEach((brick)->{
+                brick.handle(ball);
+                if (brick.getDurability() <= 0) {
+
+                }
+            });*/
         });
         timeline.getKeyFrames().add(keyFrame);
         timeline.playFromStart();
@@ -75,10 +90,12 @@ public class GameLayout extends Group {
     }
 
     public void loadLayout() {
-        /* TODO: read map from file,
-         *   and make progress bar for loading.
-         *   At last, platform run later -> show everything. */
         getChildren().add(stick);
+        getChildren().add(ball);
+        getChildren().addAll(bricks);
     }
 
+    public void setBricks(ArrayList<Brick> bricks) {
+        this.bricks = bricks;
+    }
 }

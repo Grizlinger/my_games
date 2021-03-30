@@ -10,20 +10,28 @@ public class Ball extends Circle {
     private double speed;
     private double vx;
     private double vy;
+    private double strength;
 
     public Ball() {
+        strength = 1;
         speed = 5;
         Random random = new Random();
         double d = random.nextDouble() * 2 - 1;
         vx = Math.sin(d);
         vy = -Math.cos(d);
-        if (random.nextBoolean())
-            vx *= -1;
-        if (random.nextBoolean())
-            vy *= -1;
+
         setRadius(RADIUS);
-        setCenterX(200);
-        setCenterY(200);
+        setCenterX(400);
+        setCenterY(530);
+
+        /*this.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if (keyEvent.getCode() == KeyCode.SPACE) {
+                    setSpeed(5);
+                }
+            }
+        });*/
     }
 
     public void move() {
@@ -52,5 +60,26 @@ public class Ball extends Circle {
 
         setCenterX(getCenterX() + speed * vx);
         setCenterY(getCenterY() + speed * vy);
+    }
+
+
+    public void handleHorizontalHit() {
+        vy *= -1;
+    }
+
+    public void handleVerticalHit() {
+        vx *= -1;
+    }
+
+    public double getStrength() {
+        return strength;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
     }
 }

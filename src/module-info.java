@@ -1,4 +1,4 @@
-module blocks {
+module my_games {
     requires javafx.fxml;
     requires javafx.controls;
     requires javafx.base;

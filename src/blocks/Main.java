@@ -5,6 +5,8 @@ import blocks.layouts.MainLayout;
 import blocks.layouts.SettingsLayout;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -14,7 +16,7 @@ public class Main extends Application {
 
     protected MainLayout mainLayout = new MainLayout(this);
     protected SettingsLayout settingsLayout = new SettingsLayout(this);
-    protected GameLayout gameLayout = new GameLayout();
+    protected GameLayout gameLayout;
 
     protected String style = this.getClass().getResource("style/style.css").toExternalForm();
 
@@ -22,6 +24,11 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         scene = new Scene(mainLayout, 800, 600);
         scene.getStylesheets().add(style);
+
+        scene.addEventHandler(KeyEvent.KEY_PRESSED, t -> {
+            if (t.getCode() == KeyCode.ESCAPE)
+                primaryStage.close();
+        });
 
         stage = primaryStage;
         stage.setTitle("Blocks");
@@ -35,6 +42,7 @@ public class Main extends Application {
                 scene.setRoot(mainLayout);
                 break;
             case "Start":
+                gameLayout = new GameLayout();
                 scene.setRoot(gameLayout);
                 gameLayout.setEventHandlers();
                 break;
