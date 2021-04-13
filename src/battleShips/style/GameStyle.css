@@ -1,0 +1,16 @@
+.root {
+    /*-fx-background-color: #000080;
+    /*-fx-background-color: linear-gradient(#000080 0%,repeat, #000090 -20%);*/
+    -fx-background-image: url("background.png");
+    -fx-background-repeat: repeat;
+}
+
+.text-area {
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 12pt;
+}
+
+.button {
+
+}

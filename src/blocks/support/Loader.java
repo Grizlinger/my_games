@@ -33,9 +33,9 @@ public class Loader implements Runnable {
             for (int j = 0; j < map.size() / 5; j++) {
                 if (map.get(j + i * map.size() / 5) == 1) {
                     bricks.add(new Brick(
-                            j * (gameLayout.getScene().getWindow().getWidth() - 20) / (map.size() / (map.size() / 5.0)) + 2,
+                            j * (gameLayout.getScene().getWindow().getWidth() - 20) / (map.size() / (map.size() / 5)) + 2,
                             i * 22 + 100,
-                            (gameLayout.getScene().getWindow().getWidth() - 20) / (map.size() / (map.size() / 5.0)) - 2,
+                            (gameLayout.getScene().getWindow().getWidth() - 20) / (map.size() / (map.size() / 5)) - 2,
                             20,
                             1
                     ));

@@ -9,7 +9,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class Blocks extends Application {
 
     private Stage stage;
     protected Scene scene;

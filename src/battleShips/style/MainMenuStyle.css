@@ -1,0 +1,20 @@
+.root {
+    /*-fx-background-color: #000080;
+    /*-fx-background-color: linear-gradient(#000080 0%,repeat, #000090 -20%);*/
+    -fx-background-image: url("background.png");
+    -fx-background-repeat: repeat;
+}
+
+.button {
+    -fx-background-color: #777777;
+    -fx-text-fill: #222222;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-pref-width: 200pt;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+}
+
+.button:hover {
+    -fx-background-color: radial-gradient(focus-distance 0%, center 50% 50%, radius 60%, #222222, #000000);
+    -fx-text-fill: white;
+}

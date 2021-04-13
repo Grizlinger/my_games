@@ -1,6 +1,6 @@
 package blocks.layouts;
 
-import blocks.Main;
+import blocks.Blocks;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -15,15 +15,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class SettingsLayout extends StackPane {
-    private final Main root;
+    private final Blocks root;
     private final Path path = Path.of("src/blocks/files/Settings.txt");
     private final Text text = new Text();
     private final VBox vBox = new VBox();
     private final Button back = new Button("Back");
     private String content;
 
-    public SettingsLayout(Main main) {
-        root = main;
+    public SettingsLayout(Blocks blocks) {
+        root = blocks;
         new Thread(() -> {
             try {
                 content = Files.readString(path);

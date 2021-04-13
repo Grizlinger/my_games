@@ -9,4 +9,5 @@ module my_games {
     requires javafx.swt;
 
     opens blocks;
+    opens battleShips;
 }
