@@ -26,7 +26,7 @@ public class BattleShips extends Application {
     }
 
     private void setUpGame() {
-        scene = new Scene(mainMenu, 800, 600);
+        scene = new Scene(mainMenu, 1280, 600);
         mainMenu.getStylesheets().add(mainMenuStyle);
     }
 

@@ -7,8 +7,10 @@ public class ShipPart {
     Color color;
     private int x;
     private int y;
+    private Ship ship;
 
-    public ShipPart() {
+    public ShipPart(Ship ship) {
+        this.ship = ship;
         this.hit = false;
         color = Color.GRAY;
     }
